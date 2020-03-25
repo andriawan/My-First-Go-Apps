@@ -15,16 +15,30 @@ func main() {
 	generateBanner()
 	name := getUserInput(reader)
 	age, _ := getUserAge(reader)
-	printResult(name, age)
+	var matureStatement string
+	if isMature(age) {
+		matureStatement = "You are mature, find a job"
+	} else {
+		matureStatement = "Playing video game is more fun"
+	}
+	printResult(name, age, matureStatement)
 }
 
-func printResult(name string, age int64) {
+func isMature(age int64) bool {
+	if age > 25 {
+		return true
+	}
+	return false
+}
+
+func printResult(name string, age int64, matrue string) {
 	fmt.Println("")
 	fmt.Println("------------------------------------------")
 	fmt.Println("RESULT")
 	fmt.Println("------------------------------------------")
 	fmt.Println("Hello", name)
 	fmt.Println("You are", age, "Year old now")
+	fmt.Println(matrue)
 	fmt.Println("------------------------------------------")
 	fmt.Println("")
 }
